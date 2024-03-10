@@ -1,0 +1,14 @@
+<launch>
+  <!-- Set robot description using xacro -->
+  <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find xbot)/urdf/xbot.urdf'" />
+
+
+  <!-- Show in RViz -->
+ 
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find xbot)/config/config.rviz"/>
+  
+  <arg name="use_gui" default="true" />
+  <node name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui"  output="screen" if="$(arg use_gui)"/>    
+    
+
+</launch>
